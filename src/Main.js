@@ -1,22 +1,25 @@
 import React from 'react';
+import { ANDROID, IOS, VKCOM } from '@vkontakte/vkui';
 import { 
-    View,
-	  Panel,
-	  PanelHeader,
-    PanelHeaderBack,
-	  Header,
-	  Epic,
-	  Group,
-	  Cell, 
-    Placeholder    
+  View,
+    Panel,
+    PanelHeader,
+  PanelHeaderBack,
+    Header,
+    Epic,
+    Group,
+    Cell, 
+  Placeholder,
+  SplitLayout,
+  SplitCol,
+  useAdaptivity,
+  usePlatform,
+  ViewWidth,
+  withAdaptivity
    } from '@vkontakte/vkui';
-    import { SplitLayout } from '@vkontakte/vkui/splitlayout';
-    import SplitCol from '@vkontakte/vkui/';
 	import Tabbar from '@vkontakte/vkui/dist/components/Tabbar/Tabbar';
 	import TabbarItem from '@vkontakte/vkui/dist/components/TabbarItem/TabbarItem';
-	import { ViewWidth } from '@vkontakte/vkui/view';
-  import { usePlatform, ANDROID, IOS, VKCOM } from '@vkontakte/vkui'
-	import withAdaptivity from 'vkontakte/vkui/withAdaptivity';
+
     import {
 		Icon56NewsfeedOutline,
 		Icon28NewsfeedOutline,
@@ -27,12 +30,13 @@ import {
 		} from '@vkontakte/icons';
 import '@vkontakte/vkui/dist/vkui.css';
 
-const Interface = withAdaptivity(({ viewWidth }) => {
+const Interface = withAdaptivity(({ viewWidth, VKCOM}) => {
   const platform = usePlatform();
   const [activeStory, setActiveStory] = React.useState('profile');
   const onStoryChange = (e) => setActiveStory(e.currentTarget.dataset.story);
   const isDesktop = viewWidth >= ViewWidth.TABLET;
   const hasHeader = platform !== VKCOM;
+  console.log(isDesktop);
   
     return (
       <SplitLayout
@@ -97,7 +101,7 @@ const Interface = withAdaptivity(({ viewWidth }) => {
                 onClick={onStoryChange}
                 selected={activeStory === 'feed'}
                 data-story="feed"
-                text="Новости"
+                text="Матчи"
               ><Icon28NewsfeedOutline /></TabbarItem>
               <TabbarItem
                 onClick={onStoryChange}
@@ -115,7 +119,7 @@ const Interface = withAdaptivity(({ viewWidth }) => {
           }>
             <View id="feed" activePanel="feed">
               <Panel id="feed">
-                <PanelHeader left={<PanelHeaderBack />}>Новости</PanelHeader>
+                <PanelHeader left={<PanelHeaderBack />}>Матчи</PanelHeader>
                 <Group style={{ height: '1000px' }}>
                   <Placeholder icon={<Icon56NewsfeedOutline width={56} height={56} />} />
                 </Group>
