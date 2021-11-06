@@ -9,6 +9,8 @@ import {
     Epic,
     Group,
     Cell, 
+    Tabbar,
+    TabbarItem, 
   Placeholder,
   SplitLayout,
   SplitCol,
@@ -17,9 +19,6 @@ import {
   ViewWidth,
   withAdaptivity
    } from '@vkontakte/vkui';
-	import Tabbar from '@vkontakte/vkui/dist/components/Tabbar/Tabbar';
-	import TabbarItem from '@vkontakte/vkui/dist/components/TabbarItem/TabbarItem';
-
     import {
 		Icon56NewsfeedOutline,
 		Icon28NewsfeedOutline,
@@ -28,16 +27,18 @@ import {
 		Icon28ClipOutline,
 		Icon28ServicesOutline,
 		} from '@vkontakte/icons';
-import '@vkontakte/vkui/dist/vkui.css';
+//import '@vkontakte/vkui/dist/vkui.css';
+import Matches from './panels/Admin/matches';
 
-const Interface = withAdaptivity(({ viewWidth, VKCOM}) => {
+const Interface = withAdaptivity(({ viewWidth }) => {
+
   const platform = usePlatform();
-  const [activeStory, setActiveStory] = React.useState('profile');
+  const [activeStory, setActiveStory] = React.useState('matches');
   const onStoryChange = (e) => setActiveStory(e.currentTarget.dataset.story);
   const isDesktop = viewWidth >= ViewWidth.TABLET;
   const hasHeader = platform !== VKCOM;
   console.log(isDesktop);
-  
+
     return (
       <SplitLayout
         header={hasHeader && <PanelHeader separator={false} />}
@@ -49,40 +50,40 @@ const Interface = withAdaptivity(({ viewWidth, VKCOM}) => {
               {hasHeader && <PanelHeader />}
               <Group>
                 <Cell
-                  disabled={activeStory === 'feed'}
-                  style={activeStory === 'feed' ? {
+                  disabled={activeStory === 'matches'}
+                  style={activeStory === 'matches' ? {
                     backgroundColor: "var(--button_secondary_background)",
                     borderRadius: 8
                   } : {}}
-                  data-story="feed"
+                  data-story="matches"
                   onClick={onStoryChange}
                   before={<Icon28NewsfeedOutline />}
                 >
-                  feed
+                  Матчи
                 </Cell>
                 <Cell
-                  disabled={activeStory === 'services'}
-                  style={activeStory === 'services' ? {
+                  disabled={activeStory === 'arMatches'}
+                  style={activeStory === 'arMatches' ? {
                     backgroundColor: "var(--button_secondary_background)",
                     borderRadius: 8
                   } : {}}
-                  data-story="services"
+                  data-story="arMatches"
                   onClick={onStoryChange}
                   before={<Icon28ServicesOutline />}
                 >
-                  services
+                  Завершенные матчи
                 </Cell>
                 <Cell
-                  disabled={activeStory === 'profile'}
-                  style={activeStory === 'profile' ? {
+                  disabled={activeStory === 'adminPanel'}
+                  style={activeStory === 'adminPanel' ? {
                     backgroundColor: "var(--button_secondary_background)",
                     borderRadius: 8
                   } : {}}
-                  data-story="profile"
+                  data-story="adminPanel"
                   onClick={onStoryChange}
                   before={<Icon28UserCircleOutline />}
                 >
-                  profile
+                  Админка
                 </Cell>
               </Group>
             </Panel>
@@ -99,45 +100,46 @@ const Interface = withAdaptivity(({ viewWidth, VKCOM}) => {
             <Tabbar>
               <TabbarItem
                 onClick={onStoryChange}
-                selected={activeStory === 'feed'}
-                data-story="feed"
+                selected={activeStory === 'matches'}
+                data-story="matches"
                 text="Матчи"
               ><Icon28NewsfeedOutline /></TabbarItem>
               <TabbarItem
                 onClick={onStoryChange}
-                selected={activeStory === 'services'}
-                data-story="services"
-                text="Сервисы"
+                selected={activeStory === 'arMatches'}
+                data-story="arMatches"
+                text="Завершенные матчи"
               ><Icon28ServicesOutline/></TabbarItem>
               <TabbarItem
                 onClick={onStoryChange}
-                selected={activeStory === 'profile'}
-                data-story="profile"
-                text="Профиль"
+                selected={activeStory === 'adminPanel'}
+                data-story="adminPanel"
+                text="Админка"
               ><Icon28UserCircleOutline /></TabbarItem>
             </Tabbar>
           }>
-            <View id="feed" activePanel="feed">
-              <Panel id="feed">
+            <View id="matches" activePanel="matches">
+              <Panel id="matches">
                 <PanelHeader left={<PanelHeaderBack />}>Матчи</PanelHeader>
-                <Group style={{ height: '1000px' }}>
-                  <Placeholder icon={<Icon56NewsfeedOutline width={56} height={56} />} />
+                <Group style={{ height: '400px' }}>
+                  {/* <Placeholder icon={<Icon56NewsfeedOutline width={56} height={56} />} /> */}
+                  <Matches />
                 </Group>
               </Panel>
             </View>
-            <View id="services" activePanel="services">
-              <Panel id="services">
-                <PanelHeader left={<PanelHeaderBack />}>Сервисы</PanelHeader>
-                <Group style={{ height: '1000px' }}>
+            <View id="arMatches" activePanel="arMatches">
+              <Panel id="arMatches">
+                <PanelHeader left={<PanelHeaderBack />}>Завершенные матчи</PanelHeader>
+                <Group style={{ height: '400px' }}>
                   <Placeholder icon={<Icon28ServicesOutline width={56} height={56} />}>
                   </Placeholder>
                 </Group>
               </Panel>
             </View>
-            <View id="profile" activePanel="profile">
-              <Panel id="profile">
-                <PanelHeader left={<PanelHeaderBack />}>Профиль</PanelHeader>
-                <Group style={{ height: '1000px' }}>
+            <View id="adminPanel" activePanel="adminPanel">
+              <Panel id="adminPanel">
+                <PanelHeader left={<PanelHeaderBack />}>Админка</PanelHeader>
+                <Group style={{ height: '400px' }}>
                   <Placeholder icon={<Icon28UserCircleOutline width={56} height={56} />}>
                   </Placeholder>
                 </Group>

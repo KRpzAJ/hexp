@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import connect from '@vkontakte/vkui-connect';
+import {
+    AdaptivityProvider,
+    ConfigProvider
+  } from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
-//import App from './App';
-//import Interface from './App';
+import "./panels/main.css";
 import Main from './Main';
 // import registerServiceWorker from './sw';
 
@@ -16,4 +19,22 @@ connect.send('VKWebAppInit', {});
 // Подробнее про сервис воркеры можно почитать тут — https://vk.cc/8MHpmT 
 // registerServiceWorker();
 
-ReactDOM.render(<Main />, document.getElementById('root'));
+class App extends React.Component {
+    state = {
+      commands: {},
+      matches: {},
+    };
+  
+    render(){
+      return (
+        <ConfigProvider platform="vkcom" scheme="vkcom_light">
+            <AdaptivityProvider>
+                <Main />
+            </AdaptivityProvider>
+        </ConfigProvider>
+      );
+    }
+  }
+
+
+ReactDOM.render( <App/> , document.getElementById('root'));
