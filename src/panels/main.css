@@ -12,3 +12,188 @@ html {
   max-width: 240px;
   margin: 20px auto;
 }
+
+/* Одиночный матч */
+
+*,
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.match-slider {
+  width: auto;
+  height: 195px;
+  background: #fff;
+  color: #084622;
+  display: flex;
+  position: relative;
+}
+
+.match-slider .result-block {
+  width: 450px;
+  margin: 0 auto 0 auto;
+  background: #e1ead7;
+  background: -webkit-linear-gradient(left, #e1ead7 0, #d2e7db 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#e1ead7),
+    to(#d2e7db)
+  );
+  background: linear-gradient(to right, #e1ead7 0, #d2e7db 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1ead7', endColorstr='#d2e7db', GradientType=1 );
+}
+.match-slider .result-content {
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 155px;
+  padding: 0 15px;
+}
+.match-slider .result-block .title {
+  text-align: center;
+  border-bottom: solid 1px #22422d;
+}
+.match-slider .result-block .title p.date {
+  color: #084622;
+  line-height: 0px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.match-slider .result-block .title p.date span.date-home {
+  display: inline-block;
+  margin-left: 5px;
+  background-image: url('https://whckuban.com/Content/css/sprite.png');
+  background-position: -46px -288px;
+  width: 13px;
+  height: 11px;
+}
+.match-slider .result-content {
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 155px;
+  padding: 0 15px;
+}
+.match-slider .result-content .team .img-wrap {
+  position: relative;
+  height: 87px;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.match-slider .result-content .counter .name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #084622;
+  text-transform: uppercase;
+  font-family: MyriadProBold;
+  margin: 5px 0;
+}
+.match-slider .result-content .team .name {
+  font-size: 15px;
+  font-weight: bold;
+  color: #084622;
+  text-transform: uppercase;
+  font-family: MyriadProBlack;
+  margin: 0;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.match-slider .result-content .team .city {
+  margin: 5px;
+  font-size: 10px;
+  color: #084622;
+  text-transform: uppercase;
+  font-family: MyriadProRegular;
+}
+.match-slider .result-content .counter {
+  position: relative;
+  height: 155px;
+}
+.match-slider .result-content,
+.match-slider .result-content .team .img-wrap {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  text-align: center;
+}
+.match-slider .result-content .counter .count-numbers p {
+  font-size: 26px;
+  color: #fff;
+  font-family: MyriadProBlack;
+  background: #1e8843;
+  padding: 0 7px;
+  position: relative;
+  height: 32px;
+}
+.match-slider .result-content .counter .count-numbers p:first-child:after {
+  left: 100%;
+  border-color: #1e8843 transparent transparent;
+}
+.match-slider .result-content .counter .count-numbers p:last-child:before {
+  right: 100%;
+  border-color: transparent #1e8843;
+}
+
+.match-slider .result-content .counter .count-numbers p:first-child:after,
+.match-slider .result-content .counter .count-numbers p:last-child:before {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 32px 7px 0 0;
+  z-index: 10;
+  content: '';
+}
+.match-slider .result-content .counter .count-numbers p.dotted {
+  color: #1e8843;
+  font-size: 27px;
+  padding: 0 10px;
+  background: 0 0;
+}
+
+.match-slider .result-content .counter .count-numbers {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.match-slider .result-content .counter ul li a.doc {
+  background-position: -280px -224px;
+  width: 14px;
+  height: 18px;
+}
+
+.match-slider .result-content .counter #timer {
+  margin: -13px 0 0;
+}

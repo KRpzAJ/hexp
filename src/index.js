@@ -7,6 +7,8 @@ import '@vkontakte/vkui/dist/vkui.css';
 import './panels/main.css';
 import Main from './Main';
 // import registerServiceWorker from './sw';
+import sampleCommands from './data-tmp/sample-command';
+import sampleMatches from './data-tmp/sample-matches';
 
 // Init VK App
 bridge.send('VKWebAppInit', {});
@@ -24,8 +26,9 @@ console.log(paramsAsObject);
 
 class App extends React.Component {
   state = {
-    commands: [],
-    matches: [],
+    commands: sampleCommands,
+    matches: sampleMatches,
+    tournirs: [],
     currentMatch: '',
   };
 
@@ -33,7 +36,7 @@ class App extends React.Component {
     return (
       <ConfigProvider platform='vkcom' scheme='vkcom_light'>
         <AdaptivityProvider>
-          <Main />
+          <Main st={this.state} />
         </AdaptivityProvider>
       </ConfigProvider>
     );

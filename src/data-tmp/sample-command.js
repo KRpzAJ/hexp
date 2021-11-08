@@ -1,91 +1,103 @@
 const comands = [
-    {
-        name: 'АГУ-"Адыиф"',
-        nameShort: 'АГУ-"Адыиф"',
-        nameId: 'agu1',
-        town: 'Майкоп',
-        sex: 'w',
-        line_up: {
-            name: '',
-        }
+  {
+    name: 'АГУ-"Адыиф"',
+    nameShort: 'АГУ-"Адыиф"',
+    nameId: 'agu1',
+    town: 'Майкоп',
+    sex: 'w',
+    line_up: {
+      name: '',
     },
-    {
-        name: 'Астраханочка',
-        nameShort: 'Астраханочка',
-        nameId: 'astra1',
-        town: 'Астрахань',
-        sex: 'w'
-    },
-    {
-        name: 'Динамо-Синара',
-        nameShort: 'Динамо-Синара',
-        nameId: 'dinamo1',
-        town: 'Волгоград',
-        sex: 'w'
-    },
-    {
-        name: 'Звезда',
-        nameShort: 'Звезда',
-        nameId: 'zvezda1',
-        town: 'Звенигород',
-        sex: 'w'
-    },
-    {
-        name: 'Кубань',
-        nameShort: 'Кубань',
-        nameId: 'kuban1',
-        town: 'Краснодар',
-        sex: 'w'
-    },
-    {
-        name: 'ЛАДА',
-        nameShort: 'ЛАДА',
-        nameId: 'lada1',
-        town: 'Тольятти',
-        sex: 'w'
-    },
-    {
-        name: 'Луч',
-        nameShort: 'Луч',
-        nameId: 'luch1',
-        town: 'Москва',
-        sex: 'w'
-    },
-    {
-        name: 'Ростов-Дон',
-        nameShort: 'Ростов-Дон',
-        nameId: 'rostov1',
-        town: 'Ростов-на-Дону',
-        sex: 'w'
-    },
-    {
-        name: 'Ставрополье',
-        nameShort: 'Ставрополье',
-        nameId: 'stavropol1',
-        town: 'Ставрополь',
-        sex: 'w'
-    },
-    {
-        name: 'Университет',
-        nameShort: 'Университет',
-        nameId: 'univer1',
-        town: 'Ижевск',
-        sex: 'w'
-    },
-    {
-        name: 'Уфа-Алиса',
-        nameShort: 'Уфа-Алиса',
-        nameId: 'alisa1',
-        town: 'Уфа',
-        sex: 'w'
-    },
-    {
-        name: 'ЦСКА',
-        nameShort: 'ЦСКА',
-        nameId: 'cska1',
-        town: 'Москва',
-        sex: 'w'
-    },
-]
+    logo: '/img/logos/agu.png',
+  },
+  {
+    name: 'Астраханочка',
+    nameShort: 'Астраханочка',
+    nameId: 'astra1',
+    town: 'Астрахань',
+    sex: 'w',
+    logo: '/img/logos/astra.png',
+  },
+  {
+    name: 'Динамо-Синара',
+    nameShort: 'Динамо-Синара',
+    nameId: 'dinamo1',
+    town: 'Волгоград',
+    sex: 'w',
+    logo: '/img/logos/dinamo.png',
+  },
+  {
+    name: 'Звезда',
+    nameShort: 'Звезда',
+    nameId: 'zvezda1',
+    town: 'Звенигород',
+    sex: 'w',
+    logo: '/img/logos/zvezda.png',
+  },
+  {
+    name: 'Кубань',
+    nameShort: 'Кубань',
+    nameId: 'kuban1',
+    town: 'Краснодар',
+    sex: 'w',
+    logo: '/img/logos/kuban.png',
+  },
+  {
+    name: 'ЛАДА',
+    nameShort: 'ЛАДА',
+    nameId: 'lada1',
+    town: 'Тольятти',
+    sex: 'w',
+    logo: '/img/logos/lada.png',
+  },
+  {
+    name: 'Луч',
+    nameShort: 'Луч',
+    nameId: 'luch1',
+    town: 'Москва',
+    sex: 'w',
+    logo: '/img/logos/luch.png',
+  },
+  {
+    name: 'Ростов-Дон',
+    nameShort: 'Ростов-Дон',
+    nameId: 'rostov1',
+    town: 'Ростов-на-Дону',
+    sex: 'w',
+    logo: '/img/logos/rostov.png',
+  },
+  {
+    name: 'Ставрополье',
+    nameShort: 'Ставрополье',
+    nameId: 'stavropol1',
+    town: 'Ставрополь',
+    sex: 'w',
+    logo: '/img/logos/stavropol.png',
+  },
+  {
+    name: 'Университет',
+    nameShort: 'Университет',
+    nameId: 'univer1',
+    town: 'Ижевск',
+    sex: 'w',
+    logo: '/img/logos/univer.png',
+  },
+  {
+    name: 'Уфа-Алиса',
+    nameShort: 'Уфа-Алиса',
+    nameId: 'alisa1',
+    town: 'Уфа',
+    sex: 'w',
+    logo: '/img/logos/ufa.png',
+  },
+  {
+    name: 'ЦСКА',
+    nameShort: 'ЦСКА',
+    nameId: 'cska1',
+    town: 'Москва',
+    sex: 'w',
+    logo: '/img/logos/cska.png',
+  },
+];
 
 export default comands;

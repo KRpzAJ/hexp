@@ -11,9 +11,10 @@ const Matches = (props) => {
  */
   const matches = props.matches;
   const commands = props.commands;
-
+  console.log(props);
   function searchCommand(nameCommand) {
-    return commands.filter((item) => {
+    //console.log(commands);
+    return commands.commands.filter((item) => {
       return item.nameId === nameCommand;
     });
   }
@@ -31,7 +32,7 @@ const Matches = (props) => {
 
   return (
     <Group>
-      {matches.map((key) => {
+      {matches.matches.map((key) => {
         var d1 = new Date(key.date_match + ' ' + key.time_match);
         var d2 = new Date();
         var t1 = d1.toLocaleTimeString([], {

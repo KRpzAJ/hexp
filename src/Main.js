@@ -23,15 +23,12 @@ import {
   withAdaptivity,
 } from '@vkontakte/vkui';
 import {
-  Icon56NewsfeedOutline,
   Icon28NewsfeedOutline,
-  Icon28MessageOutline,
   Icon28UserCircleOutline,
-  Icon28ClipOutline,
   Icon28ServicesOutline,
 } from '@vkontakte/icons';
-//import '@vkontakte/vkui/dist/vkui.css';
 import Matches from './panels/Admin/matches';
+import SingleMatch from './panels/Matches/SingleMatch';
 import sampleCommands from './data-tmp/sample-command';
 import sampleMatches from './data-tmp/sample-matches';
 
@@ -44,8 +41,10 @@ const Interface = withAdaptivity(
     const onStoryChange = (e) => setActiveStory(e.currentTarget.dataset.story);
     const isDesktop = viewWidth >= ViewWidth.TABLET;
     const hasHeader = platform !== VKCOM;
-    //console.log(isDesktop);
-    var state = useState({ currentMatch: '' });
+
+    const [idMatch, setCurrentMatch] = useState({ currentMatch: '' });
+    const [mtchs, setMatches] = useState({ matches: sampleMatches });
+    const [cmnds, setCommands] = useState({ commands: sampleCommands });
 
     useEffect(() => {
       bridge.subscribe(({ detail: { type, data } }) => {
@@ -59,21 +58,36 @@ const Interface = withAdaptivity(
         const user = await bridge.send('VKWebAppGetUserInfo');
         setUser(user);
         setPopout(null);
+        //console.log(mtchs);
+        setMatches({ matches: sampleMatches });
+        setCommands({ commands: sampleCommands });
       }
       fetchData();
     }, []);
 
-    function setMatch(id_m) {
-      state = { currentMatch: id_m };
-      console.log(state);
-      setActiveStory('matches_d');
-      //this.setState({ current_match: id_m });
-      console.log(fetchedUser);
+    function findMatch(id_m) {
+      const m = mtchs.matches.filter((item) => {
+        return item.id_match === id_m;
+      });
+      if (m[0]) return m[0];
     }
 
+    function setMatch(id_m) {
+      setCurrentMatch({ current_match: findMatch(id_m) });
+      console.log(idMatch);
+      setActiveStory('matches_d');
+    }
+    function loadSamples() {
+      console.log(mtchs);
+      console.log(cmnds);
+      //setMatches({ matches: sampleMatches });
+      //setCommands({ commands: sampleCommands });
+      console.log('гружу примеры');
+    }
     return (
       <>
         <Panel>
+          <button onClick={loadSamples}>Подгрузить сэмплы</button>
           {fetchedUser && (
             <Group>
               <Cell
@@ -203,8 +217,8 @@ const Interface = withAdaptivity(
                   <Group>
                     {/* <Placeholder icon={<Icon56NewsfeedOutline width={56} height={56} />} /> */}
                     <Matches
-                      commands={sampleCommands}
-                      matches={sampleMatches}
+                      commands={cmnds}
+                      matches={mtchs}
                       setMatch={setMatch}
                     />
                   </Group>
@@ -222,12 +236,15 @@ const Interface = withAdaptivity(
                   >
                     Детали матча
                   </PanelHeader>
-                  <Group style={{ height: '1000px' }}>
-                    <Placeholder
+                  <Group>
+                    {/* <Placeholder
                       icon={<Icon56NewsfeedOutline width={56} height={56} />}
+                    /> */}
+                    <SingleMatch
+                      idMatch={idMatch}
+                      commands={cmnds}
+                      user={fetchedUser}
                     />
-                    Вот тут делаем новый элемент и передаём ему значение state
-                    current_match
                   </Group>
                 </Panel>
               </View>
