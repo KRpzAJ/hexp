@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import connect from '@vkontakte/vkui-connect';
+import bridge from '@vkontakte/vk-bridge';
+
 import { AdaptivityProvider, ConfigProvider } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import './panels/main.css';
@@ -8,8 +9,13 @@ import Main from './Main';
 // import registerServiceWorker from './sw';
 
 // Init VK App
-connect.send('VKWebAppInit', {});
+bridge.send('VKWebAppInit', {});
+const querystring = require('querystring');
 
+const params = window.location.search.slice(1);
+const paramsAsObject = querystring.parse(params);
+console.log(paramsAsObject);
+//bridge.subscribe((e) => console.log(e));
 // Если вы хотите, чтобы ваше веб-приложение работало в оффлайне и загружалось быстрее,
 // расскомментируйте строку с registerServiceWorker();
 // Но не забывайте, что на данный момент у технологии есть достаточно подводных камней
@@ -20,6 +26,7 @@ class App extends React.Component {
   state = {
     commands: [],
     matches: [],
+    currentMatch: '',
   };
 
   render() {

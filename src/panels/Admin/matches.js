@@ -4,25 +4,16 @@ import { Banner, Group, Avatar } from '@vkontakte/vkui';
 import sampleCommands from '../../data-tmp/sample-command';
 import sampleMatches from '../../data-tmp/sample-matches';
 import tournirs from '../../data-tmp/tournirs';
-import { string } from 'prop-types';
 
 const Matches = (props) => {
-  const matches = useState({ matches: sampleMatches });
+  /* const matches = useState({ matches: sampleMatches });
   const commands = useState({ commands: sampleCommands });
-
-  const loadCommand = () => {
-    loadCom({ commands: sampleCommands });
-  };
-  const loadMatches = () => {
-    loadMat({ matches: sampleMatches });
-  };
-  const loadSamples = () => {
-    //loadCommand();
-    //loadMatches();
-  };
+ */
+  const matches = props.matches;
+  const commands = props.commands;
 
   function searchCommand(nameCommand) {
-    return commands[0].commands.filter((item) => {
+    return commands.filter((item) => {
       return item.nameId === nameCommand;
     });
   }
@@ -36,12 +27,11 @@ const Matches = (props) => {
   }
   function isDifferentDates(d1, d2) {
     return d1 > d2 ? true : false;
-    //return d1 - d2 !== 0;
   }
 
   return (
     <Group>
-      {matches[0].matches.map((key) => {
+      {matches.map((key) => {
         var d1 = new Date(key.date_match + ' ' + key.time_match);
         var d2 = new Date();
         var t1 = d1.toLocaleTimeString([], {
@@ -56,7 +46,7 @@ const Matches = (props) => {
               key={`id_match_${key.id_match}`}
               before={
                 <Avatar
-                  size={72}
+                  size={40}
                   mode='image'
                   src={!imgT ? '/img/non_tournir.png' : imgT}
                 />
@@ -69,13 +59,13 @@ const Matches = (props) => {
               subheader={`${key.tournir} - ${d1.toLocaleDateString()} 
               ${t1}`}
               asideMode='expand'
-              onClick={() => console.log('[Podcast banner] onClick')}
+              onClick={() => props.setMatch(key.id_match)}
             />
           );
         }
       })}
 
-      <button onClick={loadSamples}>Загрузить команды</button>
+      {/* <button onClick={loadSamples}>Загрузить команды</button> */}
     </Group>
   );
 };
