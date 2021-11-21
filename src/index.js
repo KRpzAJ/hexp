@@ -9,6 +9,7 @@ import Main from './Main';
 // import registerServiceWorker from './sw';
 import sampleCommands from './data-tmp/sample-command';
 import sampleMatches from './data-tmp/sample-matches';
+import tournirs from './data-tmp/tournirs';
 
 // Init VK App
 bridge.send('VKWebAppInit', {});
@@ -25,12 +26,15 @@ console.log(paramsAsObject);
 // registerServiceWorker();
 
 class App extends React.Component {
-  state = {
-    commands: sampleCommands,
-    matches: sampleMatches,
-    tournirs: [],
-    currentMatch: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      commands: sampleCommands,
+      matches: sampleMatches,
+      tournirs: tournirs,
+      currentMatch: '',
+    };
+  }
 
   render() {
     return (

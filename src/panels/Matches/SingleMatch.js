@@ -2,7 +2,6 @@ import React from 'react';
 import { div, Avatar, Group } from '@vkontakte/vkui';
 
 const SingleMatch = (props) => {
-  console.log(props);
   const match = props.idMatch;
   const commands = props.commands;
   const h_command = searchCommand(match.current_match.h_command);

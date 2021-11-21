@@ -12,6 +12,7 @@ import {
   Epic,
   Group,
   Cell,
+  CellButton,
   Tabbar,
   TabbarItem,
   Placeholder,
@@ -23,12 +24,15 @@ import {
   withAdaptivity,
 } from '@vkontakte/vkui';
 import {
+  Icon56EventOutline,
   Icon28NewsfeedOutline,
   Icon28UserCircleOutline,
   Icon28ServicesOutline,
+  Icon24CupOutline,
 } from '@vkontakte/icons';
 import Matches from './panels/Admin/matches';
 import SingleMatch from './panels/Matches/SingleMatch';
+import CommandForm from './panels/Admin/command';
 import sampleCommands from './data-tmp/sample-command';
 import sampleMatches from './data-tmp/sample-matches';
 
@@ -74,7 +78,6 @@ const Interface = withAdaptivity(
 
     function setMatch(id_m) {
       setCurrentMatch({ current_match: findMatch(id_m) });
-      console.log(idMatch);
       setActiveStory('matches_d');
     }
     function loadSamples() {
@@ -87,7 +90,7 @@ const Interface = withAdaptivity(
     return (
       <>
         <Panel>
-          <button onClick={loadSamples}>Подгрузить сэмплы</button>
+          {/* <button onClick={loadSamples}>Подгрузить сэмплы</button> */}
           {fetchedUser && (
             <Group>
               <Cell
@@ -215,7 +218,6 @@ const Interface = withAdaptivity(
                 <Panel id='matches'>
                   <PanelHeader>Матчи</PanelHeader>
                   <Group>
-                    {/* <Placeholder icon={<Icon56NewsfeedOutline width={56} height={56} />} /> */}
                     <Matches
                       commands={cmnds}
                       matches={mtchs}
@@ -237,9 +239,6 @@ const Interface = withAdaptivity(
                     Детали матча
                   </PanelHeader>
                   <Group>
-                    {/* <Placeholder
-                      icon={<Icon56NewsfeedOutline width={56} height={56} />}
-                    /> */}
                     <SingleMatch
                       idMatch={idMatch}
                       commands={cmnds}
@@ -263,11 +262,54 @@ const Interface = withAdaptivity(
               </View>
               <View id='adminPanel' activePanel='adminPanel'>
                 <Panel id='adminPanel'>
-                  <PanelHeader left={<PanelHeaderBack />}>Админка</PanelHeader>
-                  <Group style={{ height: '1000px' }}>
-                    <Placeholder
-                      icon={<Icon28UserCircleOutline width={56} height={56} />}
-                    ></Placeholder>
+                  <PanelHeader>Админка</PanelHeader>
+                  <Group
+                    header={<Header mode='secondary'>Изменить списки</Header>}
+                  >
+                    <CellButton
+                      before={
+                        <Avatar shadow={false} size={40}>
+                          <Icon28UserCircleOutline />
+                        </Avatar>
+                      }
+                    >
+                      Команды
+                    </CellButton>
+                    <CellButton
+                      before={
+                        <Avatar shadow={false} size={40}>
+                          <Icon24CupOutline />
+                        </Avatar>
+                      }
+                    >
+                      Турниры
+                    </CellButton>
+
+                    <CellButton
+                      before={
+                        <Avatar shadow={false} size={40} mode='image'>
+                          <Icon56EventOutline width='40' />
+                        </Avatar>
+                      }
+                    >
+                      Матчи
+                    </CellButton>
+                  </Group>
+                </Panel>
+              </View>
+              <View id='adminPanelCommand' activePanel='adminPanelCommand'>
+                <Panel id='adminPanelCommand'>
+                  <PanelHeader
+                    left={
+                      <PanelHeaderBack
+                        onClick={() => setActiveStory('adminPanel')}
+                      />
+                    }
+                  >
+                    Команды
+                  </PanelHeader>
+                  <Group>
+                    <CommandForm />
                   </Group>
                 </Panel>
               </View>
