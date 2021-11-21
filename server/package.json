@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "Server HEXP",
+  "description": "Server expert",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js"
